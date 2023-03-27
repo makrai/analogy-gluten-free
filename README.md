@@ -5,7 +5,7 @@ What are gluten-free word embeddings?
 The idea of langue modeling with sub-word level units is not new either 
 universally (for a summary, see [Nemeskey 2017](https://hlt.bme.hu/en/publ/emLam)) or 
 in Hungarian NLP (from phrase-based statistical machine translation to static word embeddings (Siklósi and Novák [2016 in Hungarian](http://acta.bibl.u-szeged.hu/58957/), Siklósi [2016](https://link.springer.com/chapter/10.1007/978-3-319-75477-2_7)).
-The pun _gluten-free_ comes from the term agglutinative for languages that glue suffixes to word stems to mark grammatical features.
+The pun _gluten-free_ comes from the term _agglutinative_ for languages that glue suffixes to word stems to mark grammatical features.
 
 ```
 jelmondatával → jelmondat <poss> <cas<ins>>
