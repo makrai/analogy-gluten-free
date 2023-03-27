@@ -13,6 +13,6 @@ akartak → akar <past> <plur>
 ```
 Example by Nemeskey (2017).
 
-This modest project evaluates gluten-free word embeddings in the Hungarian equivalent of the word analogy task (Mikolov+ 2013) 
+This modest project evaluates gluten-free word embeddings in the [Hungarian equivalent](http://corpus.nytud.hu/efnilex-vect/) of [the word analogy task](https://github.com/tmikolov/word2vec) (Mikolov+ 2013) 
 for the purposes of the [PhD thesis](https://hlt.bme.hu/hu/publ/makrai-thesis) of Márton Makrai.
 The thesis introduces the task in Section 4.2.7., and the results of this project are reported in Section 7.4.
