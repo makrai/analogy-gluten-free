@@ -68,7 +68,7 @@ def get_sentences(file_pattern='2017_2018_2956', deglutinate_=False):
                     word_records.append(line.split('\t'))
 
 
-for file_pattern in ['wiki_', '2017_2018', '201', '']:
+for file_pattern in ['2017_2018_2956', '2017_2018_295', '2017_2018_29', 'wiki', '2017_2018_2', '2017_2018', '201', '']:
     for deglutinate_ in [False, True]:
         deglutinate_humanread = 'deglut' if deglutinate_ else 'vanila'
         logging.info((file_pattern, deglutinate_humanread))
