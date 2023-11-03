@@ -68,26 +68,29 @@ def get_sentences(file_pattern='2017_2018_2956', deglutinate_=False):
                     word_records.append(line.split('\t'))
 
 
-for file_pattern in ['2017_2018_2956', '2017_2018_295', '2017_2018_29', 'wiki', '2017_2018_2', '2017_2018', '201', '']:
-    for deglutinate_ in [False, True]:
-        deglutinate_humanread = 'deglutAllSuffSepd' if deglutinate_ else 'vanila'
-        logging.info((file_pattern, deglutinate_humanread))
-        filen = f'/mnt/permanent/Language/Hungarian/Embed/webcorpus2.0/sgns-300-{file_pattern}-{deglutinate_humanread}'
-        vocab_model_filen = f'{filen}-vocab.gensim'
-        trained_model_filen = f'{filen}.gensim'
-        if os.path.exists(trained_model_filen):
-            logging.info(f'file exists: {trained_model_filen}')
-        else:
-            logging.debug(vocab_model_filen)
-            if os.path.exists(vocab_model_filen):
-                logging.info(f'loading {vocab_model_filen}')
-                model = gensim.models.Word2Vec.load(vocab_model_filen)
+if __name__ == '__main__':
+    for file_pattern in ['2017_2018_2956', '2017_2018_295', '2017_2018_29', 'wiki', '2017_2018_2', '2017_2018', '201',
+                         '']:
+        for deglutinate_ in [False, True]:
+            deglut_humanread = 'deglutAllSuffSepd' if deglutinate_ else 'vanila'
+            logging.info((file_pattern, deglut_humanread))
+            filen = f'/mnt/permanent/Language/Hungarian/Embed/webcorpus2.0/sgns-300-{file_pattern}-{deglut_humanread}'
+            vocab_model_filen = f'{filen}-vocab.gensim'
+            trained_model_filen = f'{filen}.gensim'
+            if os.path.exists(trained_model_filen):
+                logging.info(f'file exists: {trained_model_filen}')
             else:
-                logging.info('building vocab..')
-                model = gensim.models.Word2Vec(vector_size=300, sg=True)
-                model.build_vocab(corpus_iterable=get_sentences(file_pattern=file_pattern, deglutinate_=deglutinate_))
-                model.save(filen+'-vocab.gensim')
-            logging.info('training model..')
-            model.train(get_sentences(file_pattern=file_pattern, deglutinate_=deglutinate_),
-                        total_examples=model.corpus_count, epochs=1)
-            model.save(f'{filen}.gensim')
+                logging.debug(vocab_model_filen)
+                if os.path.exists(vocab_model_filen):
+                    logging.info(f'loading {vocab_model_filen}')
+                    model = gensim.models.Word2Vec.load(vocab_model_filen)
+                else:
+                    logging.info('building vocab..')
+                    model = gensim.models.Word2Vec(vector_size=300, sg=True)
+                    model.build_vocab(corpus_iterable=get_sentences(file_pattern=file_pattern,
+                                                                    deglutinate_=deglutinate_))
+                    model.save(filen+'-vocab.gensim')
+                logging.info('training model..')
+                model.train(get_sentences(file_pattern=file_pattern, deglutinate_=deglutinate_),
+                            total_examples=model.corpus_count, epochs=1)
+                model.save(f'{filen}.gensim')
